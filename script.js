@@ -1,8 +1,3 @@
-
-
-
-
-
 function getPlayerChoice() {
     const playerInput = prompt();
     const playerChoice = playerInput.toLocaleLowerCase();
@@ -44,7 +39,6 @@ function playAround(playerSelection, computerSelection) {
 
     return roundResult;
 }
-
 
 function game() {
 
