@@ -1,3 +1,14 @@
+
+
+
+
+
+function getPlayerChoice() {
+    const playerInput = prompt();
+    const playerChoice = playerInput.toLocaleLowerCase();
+    return playerChoice;
+}
+
 function getComputerChoice() {
     const options = ["rock","paper","scissors"];
 
@@ -35,7 +46,14 @@ function playAround(playerSelection, computerSelection) {
 }
 
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
+function game() {
 
-console.log(playAround(playerSelection, computerSelection));
+    for(let i = 0; i < 5; i++) {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice(); 
+        const roundResult = playAround(playerSelection, computerSelection);
+        console.log(roundResult);
+    }   
+}
+
+game();
