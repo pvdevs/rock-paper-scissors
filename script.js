@@ -7,13 +7,31 @@ function getComputerChoice() {
 }
 
 function playAround(playerSelection, computerSelection) {
-    if(playerSelection == computerSelection) {
-        console.log("tie");
+    let roundResult;
+
+    if(playerSelection == computerSelection) {   
+        roundResult = "Tie";
+
     } else if(playerSelection == "rock" && computerSelection == "paper") {
-        console.log("CPU Wins");
-    } else {
-        console.log("Player Wins");
+        roundResult = "CPU Wins";
+
+    } else if(playerSelection == "rock" && computerSelection == "scissors") {
+        roundResult = "Player Wins";
+
+    } else if(playerSelection == "paper" && computerSelection == "scissors") {
+        roundResult = "CPU Wins";
+
+    } else if(playerSelection == "paper" && computerSelection == "rock") {
+        roundResult = "Player Wins";
+
+    } else if(playerSelection == "scissors" && computerSelection == "rock") {
+        roundResult = "CPU Wins";
+
+    } else if(playerSelection == "scissors" && computerSelection == "paper") {
+        roundResult = "Player Wins";
     }
+
+    return roundResult;
 }
 
 
@@ -21,5 +39,3 @@ const playerSelection = "rock";
 const computerSelection = getComputerChoice();
 
 console.log(playAround(playerSelection, computerSelection));
-
-
