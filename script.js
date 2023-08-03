@@ -1,8 +1,15 @@
 function getPlayerChoice() {
-    const playerInput = prompt();
-    const playerChoice = playerInput.toLocaleLowerCase();
-    return playerChoice;
+    let playerChoice;
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            playerChoice = button.id;
+            console.log(playerChoice)
+        })
+    })
 }
+// isnt it better if i make this function as a anonymous function inside of const playerChoice?
+
 
 function getComputerChoice() {
     const options = ["rock","paper","scissors"];
@@ -42,12 +49,16 @@ function playAround(playerSelection, computerSelection) {
 
 function game() {
 
-    for(let i = 0; i < 5; i++) {
+  /*  for(let i = 0; i < 5; i++) {
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice(); 
         const roundResult = playAround(playerSelection, computerSelection);
         console.log(roundResult);
-    }   
+    }   */
+    const playerSelection = getPlayerChoice();
+    const computerSelection = getComputerChoice(); 
+    const roundResult = playAround(playerSelection, computerSelection);
+    console.log(roundResult);
 }
 
 game();
