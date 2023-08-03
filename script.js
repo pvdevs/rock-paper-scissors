@@ -1,14 +1,29 @@
-function getPlayerChoice() {
+/*function getPlayerChoice() {
     let playerChoice;
+
     const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             playerChoice = button.id;
             console.log(playerChoice)
-        })
-    })
+            return playerChoice;
+        });
+    });
 }
-// isnt it better if i make this function as a anonymous function inside of const playerChoice?
+*/
+
+function getPlayerChoice() {
+    return new Promise((resolve) => {
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const playerChoice = button.id;
+                console.log(playerChoice);
+                resolve(playerChoice); // Resolve the Promise with the selected choice
+            });
+        });
+    });
+}
 
 
 function getComputerChoice() {
@@ -47,7 +62,7 @@ function playAround(playerSelection, computerSelection) {
     return roundResult;
 }
 
-function game() {
+async function game() {
 
   /*  for(let i = 0; i < 5; i++) {
         const playerSelection = getPlayerChoice();
@@ -55,10 +70,12 @@ function game() {
         const roundResult = playAround(playerSelection, computerSelection);
         console.log(roundResult);
     }   */
-    const playerSelection = getPlayerChoice();
+
+    const playerSelection = await getPlayerChoice();
     const computerSelection = getComputerChoice(); 
     const roundResult = playAround(playerSelection, computerSelection);
     console.log(roundResult);
+
 }
 
 game();
