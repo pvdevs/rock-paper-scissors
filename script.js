@@ -1,6 +1,6 @@
 function getPlayerChoice() {
     return new Promise((resolve) => {
-        const buttons = document.querySelectorAll('.button-container h1');
+        const buttons = document.querySelectorAll('.button-container a');
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 const playerChoice = button.id;
