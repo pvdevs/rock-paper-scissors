@@ -5,6 +5,7 @@ function getPlayerChoice() {
             button.addEventListener('click', () => {
                 const playerChoice = button.id;
                 console.log(playerChoice);
+
                 resolve(playerChoice); // Resolve the Promise with the selected choice
             });
         });
@@ -54,17 +55,30 @@ function playAround(playerSelection, computerSelection) {
 
     }
 
+    
     return roundResult;
 }
 
 async function game() {
 
     for(let i = 0; i < Infinity; i++) {
+
     const playerSelection = await getPlayerChoice();
     const computerSelection = getComputerChoice(); 
     const roundResult = playAround(playerSelection, computerSelection);
     console.log(roundResult);
 
+    const div = document.querySelector('.cpu-card-inner');
+    div.setAttribute('style','transform: rotateY(180deg);');
+
+    const unflipCard = setTimeout(() => {
+        div.setAttribute('style','transform: rotateY(0deg);');
+    }, '1500');
+
+    const h1 = document.getElementById('cpu-choice') ;
+    h1.textContent = computerSelection;
+
+    
     if(computerLifes <= 0) {
         console.log('You win!');
         break;
@@ -76,6 +90,8 @@ async function game() {
 
     console.log(computerLifes, playerLifes);
     }  
+
+    unflipCard();
 }
 
 let playerLifes = 5;
