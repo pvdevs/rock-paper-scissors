@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
 
 
 html { height:100%; }
@@ -12,6 +12,64 @@ body {
     display:block;
     box-sizing: border-box;
     
+}
+.winner {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-color: #0029FF;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.winner h1 {
+  margin: 0;
+  padding: 0;
+  color: #FFF;
+  font-size: 136px;
+  font-weight: 800;
+}
+
+.winner h2 {
+  margin: 0;
+  padding: 0;
+  color: #FFF;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.visible {
+  display: flex;
+}
+
+.invisible {
+  display: none;
+}
+
+.tie {
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 .damage-computer {
@@ -45,7 +103,8 @@ body {
   font-weight: 800;
 }
 
-.button-container :hover {
+
+.button-container h1 :hover {
   color: #0029FF;
   transition: ease 100ms;
 }
@@ -56,11 +115,21 @@ a {
 }
 
 
-.button-container {
+.button-container p {
+  margin: 0;
+  padding: 16px 0px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0C0C0C;
+}
+
+
+
+
+.button-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
   gap: 24px;
   flex: auto;
 }

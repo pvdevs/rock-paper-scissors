@@ -30,21 +30,25 @@ function playAround(playerSelection, computerSelection) {
     const outlineOut = setTimeout(() => {
         body.setAttribute('style', 'border-left: 0px;')
         body.setAttribute('style', 'border-right: 0px;')
-    }, 1500) ;
+        body.classList.remove('tie')
+    }, 1000) ;
 
     if(playerSelection == computerSelection) {   
         roundResult = "Tie";
+        body.classList.add('tie')
+        
+        
 
     } else if(playerSelection == "Rock" && computerSelection == "Paper") {
         roundResult = "CPU Wins";
         playerLifes -= 1;
         playerDamage = true;
-        body.setAttribute('style', 'border-right: solid #77e000 48px;')
+        body.setAttribute('style', 'border-right: solid #0029FF 80px;')
     } else if(playerSelection == "Rock" && computerSelection == "Scissors") {
         roundResult = "Player Wins";
         computerLifes -= 1;
         computerDamage = true;
-        body.setAttribute('style', 'border-left: solid #77e000 48px;')
+        body.setAttribute('style', 'border-left: solid #0029FF 80px;')
 
 
 
@@ -52,12 +56,12 @@ function playAround(playerSelection, computerSelection) {
         roundResult = "CPU Wins";
         playerLifes -= 1;
         playerDamage = true;
-        body.setAttribute('style', 'border-right: solid #77e000 48px;')
+        body.setAttribute('style', 'border-right: solid #0029FF 80px;')
     } else if(playerSelection == "Paper" && computerSelection == "Rock") {
         roundResult = "Player Wins";
         computerLifes -= 1;
         computerDamage = true;
-        body.setAttribute('style', 'border-left: solid #77e000 48px;')
+        body.setAttribute('style', 'border-left: solid #0029FF 80px;')
 
 
 
@@ -87,6 +91,9 @@ async function game() {
 
     for(let i = 0; i < Infinity; i++) {
 
+        const score = document.querySelector('.button-container p');
+        score.textContent = `${playerLifes} x ${computerLifes}`
+
         const playerSelection = await getPlayerChoice();
         const computerSelection = getComputerChoice(); 
         const roundResult = playAround(playerSelection, computerSelection);
@@ -100,7 +107,7 @@ async function game() {
 
         const unflipCard = setTimeout(() => {
             div.setAttribute('style','transform: rotateY(0deg);');
-        }, '1500');
+        }, '1000');
 
 
 
@@ -110,15 +117,25 @@ async function game() {
         const h1 = document.getElementById('cpu-choice') ;
         h1.textContent = computerSelection;
 
+        const winner = document.querySelector('.winner')
+        const board = document.querySelector('.board')
 
+        const winnerText = document.querySelector('.winner h1')
+    
 
         if(computerLifes <= 0) {
             console.log('You win!');
+            winnerText.innerText = 'PLAYER WON!'
+            winner.classList.add('visible')
+            board.classList.add('invisible')
             break;
         }
         if(playerLifes <= 0) {
             console.log('You Lose!');
-            break
+            winnerText.innerText = 'CPU WON!'
+            winner.classList.add('visible')
+            board.classList.add('invisible')
+            break;
         }
 
         console.log(computerLifes, playerLifes);
@@ -127,6 +144,14 @@ async function game() {
    // outlineOut();
     unflipCard();
 }
+
+
+const playAgain = document.querySelector('.winner h2');
+playAgain.addEventListener('click', () => {
+    game();
+});
+
+
 
 let playerLifes = 5;
 let computerLifes = 5;
