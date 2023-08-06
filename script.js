@@ -14,7 +14,7 @@ function getPlayerChoice() {
 
 
 function getComputerChoice() {
-    const options = ["rock","paper","scissors"];
+    const options = ["Rock","Paper","Scissors"];
 
     const index = Math.floor(Math.random() * options.length);
 
@@ -27,29 +27,29 @@ function playAround(playerSelection, computerSelection) {
     if(playerSelection == computerSelection) {   
         roundResult = "Tie";
 
-    } else if(playerSelection == "rock" && computerSelection == "paper") {
+    } else if(playerSelection == "Rock" && computerSelection == "Paper") {
         roundResult = "CPU Wins";
         playerLifes -= 1;
 
-    } else if(playerSelection == "rock" && computerSelection == "scissors") {
+    } else if(playerSelection == "Rock" && computerSelection == "SCISSORS") {
         roundResult = "Player Wins";
         computerLifes -= 1;
 
-    } else if(playerSelection == "paper" && computerSelection == "scissors") {
+    } else if(playerSelection == "Paper" && computerSelection == "SCISSORS") {
         roundResult = "CPU Wins";
         playerLifes -= 1;
 
 
-    } else if(playerSelection == "paper" && computerSelection == "rock") {
+    } else if(playerSelection == "Paper" && computerSelection == "Rock") {
         roundResult = "Player Wins";
         computerLifes -= 1;
 
-    } else if(playerSelection == "scissors" && computerSelection == "rock") {
+    } else if(playerSelection == "SCISSORS" && computerSelection == "Rock") {
         roundResult = "CPU Wins";
         playerLifes -= 1;
 
 
-    } else if(playerSelection == "scissors" && computerSelection == "paper") {
+    } else if(playerSelection == "SCISSORS" && computerSelection == "Paper") {
         roundResult = "Player Wins";
         computerLifes -= 1;
 
