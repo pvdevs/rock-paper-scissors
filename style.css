@@ -1,43 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
 
+
+html { height:100%; }
+
 body {
     font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    width: 100%;
+    display:block;
+    box-sizing: border-box;
     
+}
+
+.damage-computer {
+  border-right: solid #77e000 48px;
+  transition: ease-in-out 0.6s;
+}
+
+.damage-player {
+  border-left: solid #0029FF 48px;
+  transition: ease-in-out 0.6s;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
-  padding: 96px 200px;
+  height: 100vh;
+  margin: 0;
+  padding: 0px 200px;
+  transition: all 0.7s;
+  transition-timing-function: ease-in-out;
 }
 
-.button-container button {
+.button-container h1 {
+  color: #0C0C0C;
   background:none;
   border:none;
   margin:0;
   padding:0;
   cursor: pointer;
   font-size: 136px;
-  font-weight: 900;
-}
-
-.button-container #Rock {
-  color: #020202;
-  background:none;
-  border:none;
-  margin:0;
-  padding:0;
-  cursor: pointer;
-  font-size: 112px;
-  font-weight: 900;
-  
+  font-weight: 800;
 }
 
 .button-container :hover {
-  color: #002fff;
-  transition: 100ms;
-  transition-timing-function: ease;
-
+  color: #0029FF;
+  transition: ease 100ms;
 }
 
 a {
@@ -51,12 +61,16 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: start;
+  gap: 24px;
+  flex: auto;
 }
 
 .card-side {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .cpu-card {
@@ -65,6 +79,8 @@ a {
     height: 696px;
     perspective: 1000px;
     display: flex;
+    margin: 0;
+    padding: 0;
   }
   
   .cpu-card-inner {
@@ -74,6 +90,7 @@ a {
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    
   }
   
   .cpu-card-front, .cpu-card-back {
@@ -93,23 +110,23 @@ a {
   }
 
   .cpu-card h1 {
-    font-size: 96px;
-    font-weight: 900;
+    font-size: 112px;
+    font-weight: 800;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
   .cpu-card-front {
-    background-color: #020202;
-    color: black;
+    background-color: #0C0C0C;
+    color: 0C0C0C;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
   .cpu-card-back {
-    background-color: #002fff;
+    background-color: #0029FF;
     color: white;
     transform: rotateY(180deg);
     display: flex;

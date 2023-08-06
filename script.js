@@ -1,6 +1,6 @@
 function getPlayerChoice() {
     return new Promise((resolve) => {
-        const buttons = document.querySelectorAll('button');
+        const buttons = document.querySelectorAll('.button-container h1');
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 const playerChoice = button.id;
@@ -23,6 +23,14 @@ function getComputerChoice() {
 
 function playAround(playerSelection, computerSelection) {
     let roundResult;
+    let body = document.querySelector('.container');
+    let computerDamage = false;
+    let playerDamage = false;
+
+    const outlineOut = setTimeout(() => {
+        body.setAttribute('style', 'border-left: 0px;')
+        body.setAttribute('style', 'border-right: 0px;')
+    }, 1500) ;
 
     if(playerSelection == computerSelection) {   
         roundResult = "Tie";
@@ -30,67 +38,93 @@ function playAround(playerSelection, computerSelection) {
     } else if(playerSelection == "Rock" && computerSelection == "Paper") {
         roundResult = "CPU Wins";
         playerLifes -= 1;
-
-    } else if(playerSelection == "Rock" && computerSelection == "SCISSORS") {
+        playerDamage = true;
+        body.setAttribute('style', 'border-right: solid #77e000 48px;')
+    } else if(playerSelection == "Rock" && computerSelection == "Scissors") {
         roundResult = "Player Wins";
         computerLifes -= 1;
+        computerDamage = true;
+        body.setAttribute('style', 'border-left: solid #77e000 48px;')
 
-    } else if(playerSelection == "Paper" && computerSelection == "SCISSORS") {
+
+
+    } else if(playerSelection == "Paper" && computerSelection == "Scissors") {
         roundResult = "CPU Wins";
         playerLifes -= 1;
-
-
+        playerDamage = true;
+        body.setAttribute('style', 'border-right: solid #77e000 48px;')
     } else if(playerSelection == "Paper" && computerSelection == "Rock") {
         roundResult = "Player Wins";
         computerLifes -= 1;
+        computerDamage = true;
+        body.setAttribute('style', 'border-left: solid #77e000 48px;')
 
-    } else if(playerSelection == "SCISSORS" && computerSelection == "Rock") {
+
+
+    } else if(playerSelection == "Scissors" && computerSelection == "Rock") {
         roundResult = "CPU Wins";
         playerLifes -= 1;
+        playerDamage = true;
+        body.setAttribute('style', 'border-right: solid #77e000 48px;')
 
 
-    } else if(playerSelection == "SCISSORS" && computerSelection == "Paper") {
+    } else if(playerSelection == "Scissors" && computerSelection == "Paper") {
         roundResult = "Player Wins";
         computerLifes -= 1;
+        computerDamage = true;
+        body.setAttribute('style', 'border-left: solid #77e000 48px;')
+
 
     }
 
     
     return roundResult;
+    outlineOut();
+
 }
 
 async function game() {
 
     for(let i = 0; i < Infinity; i++) {
 
-    const playerSelection = await getPlayerChoice();
-    const computerSelection = getComputerChoice(); 
-    const roundResult = playAround(playerSelection, computerSelection);
-    console.log(roundResult);
+        const playerSelection = await getPlayerChoice();
+        const computerSelection = getComputerChoice(); 
+        const roundResult = playAround(playerSelection, computerSelection);
+        console.log(roundResult);
 
-    const div = document.querySelector('.cpu-card-inner');
-    div.setAttribute('style','transform: rotateY(180deg);');
+        const div = document.querySelector('.cpu-card-inner');
+        div.setAttribute('style','transform: rotateY(180deg);');
 
-    const unflipCard = setTimeout(() => {
-        div.setAttribute('style','transform: rotateY(0deg);');
-    }, '1500');
+        //body.setAttribute('style', 'border-left: solid #0029FF 48px;')
 
-    const h1 = document.getElementById('cpu-choice') ;
-    h1.textContent = computerSelection;
 
-    
-    if(computerLifes <= 0) {
-        console.log('You win!');
-        break;
-    }
-    if(playerLifes <= 0) {
-        console.log('You Lose!');
-        break
-    }
+        const unflipCard = setTimeout(() => {
+            div.setAttribute('style','transform: rotateY(0deg);');
+        }, '1500');
 
-    console.log(computerLifes, playerLifes);
-    }  
 
+
+
+
+
+        const h1 = document.getElementById('cpu-choice') ;
+        h1.textContent = computerSelection;
+
+
+
+        if(computerLifes <= 0) {
+            console.log('You win!');
+            break;
+        }
+        if(playerLifes <= 0) {
+            console.log('You Lose!');
+            break
+        }
+
+        console.log(computerLifes, playerLifes);
+        }  
+
+   // outlineOut();
     unflipCard();
 }
 
