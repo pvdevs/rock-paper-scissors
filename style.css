@@ -169,6 +169,31 @@ a {
   animation-iteration-count: infinite;
 }
 
+.credits {
+  padding: 40px 0px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 16px;
+}
+
+#text-credits {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  color: #363636;
+}
+
+.fa-github {
+  color: #363636;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: scale(1.4);
+  color: #0029FF;
+}
+
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -182,3 +207,4 @@ a {
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
