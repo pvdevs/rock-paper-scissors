@@ -17,6 +17,11 @@ a {
   text-decoration: none;
 }
 
+#score {
+  font-size: 32px;
+  font-weight: 600;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -170,7 +175,6 @@ a {
 }
 
 .credits {
-  padding: 40px 0px;
   display: flex;
   justify-content: start;
   align-items: center;
